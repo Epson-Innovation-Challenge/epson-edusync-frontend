@@ -1,17 +1,10 @@
 import streamlit as st
 from st_pages import show_pages_from_config
+from utils import load_page_config
 
 show_pages_from_config()
 
-st.set_page_config(
-    page_title="EPSON EDUSYNC",
-    page_icon="📚",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
-
-with st.sidebar:
-    st.subheader("Teacher")
+load_page_config()
 
 class1, clss2, class3 = st.tabs(["1-1", "1-2", "1-3"])
 
