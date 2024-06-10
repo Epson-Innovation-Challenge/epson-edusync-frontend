@@ -1,28 +1,20 @@
 import streamlit as st
-import pandas as pd
+from utils import load_page_config, load_data
 
-st.set_page_config(
-    page_title="EPSON EDUSYNC",
-    page_icon="📚",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
+if __name__ == "__main__":
+    load_page_config()
+    df = load_data("example.csv")
 
-with st.sidebar:
-    st.subheader("Teacher")
-
-df = pd.read_csv("student_scores_with_progress.csv")
-
-st.data_editor(
-    df,
-    column_config={
-        "Progress" : st.column_config.ProgressColumn(
-            "Total Progress",
-            help="Total progress of the student",
-            format="%f",
-            min_value=0,
-            max_value=100,
-        ),
-    },
-    hide_index=True,
-)
+    st.data_editor(
+        df,
+        column_config={
+            "Progress" : st.column_config.ProgressColumn(
+                "Total Progress",
+                help="Total progress of the student",
+                format="%f",
+                min_value=0,
+                max_value=100,
+            ),
+        },
+        hide_index=True,
+    )
