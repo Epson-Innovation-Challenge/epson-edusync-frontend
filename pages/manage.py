@@ -1,5 +1,21 @@
 import streamlit as st
-from utils import load_page_config
+from utils import load_page_config, load_data
+
+def load_progress(class_num):
+    df = load_data("example.csv")
+    df_class = df[df["Class"] == class_num]
+
+    n_cols = 4
+    n_rows = len(df_class) // n_cols
+
+    st.subheader(f"1-{class_num} 진도관리")
+    for i in range(n_rows):
+        row = st.columns(n_cols)
+        for j, col in enumerate(row):
+            student = df_class.iloc[i * n_cols + j]
+            tile = col.container(height=140)
+            tile.write(f"📌 {student['Name']}")
+            tile.progress(int(student['Progress']))
 
 
 if __name__ == "__main__":
@@ -8,31 +24,10 @@ if __name__ == "__main__":
     class1, clss2, class3 = st.tabs(["1-1", "1-2", "1-3"])
 
     with class1:
-        st.subheader("1-1 진도 관리")
-
-        row1 = st.columns(4)
-        row2 = st.columns(4)
-
-        for idx, col in enumerate(row1 + row2):
-            tile = col.popover(f"학생 {idx+1}", use_container_width=True)
-            tile.write("📌")
+        load_progress(1)
 
     with clss2:
-        st.subheader("1-2 진도 관리")
-
-        row1 = st.columns(4)
-        row2 = st.columns(4)
-
-        for idx, col in enumerate(row1 + row2):
-            tile = col.popover(f"학생 {idx+1}", use_container_width=True)
-            tile.write("📌")
+        load_progress(2)
 
     with class3:
-        st.subheader("1-3 진도 관리")
-
-        row1 = st.columns(4)
-        row2 = st.columns(4)
-
-        for idx, col in enumerate(row1 + row2):
-            tile = col.popover(f"학생 {idx+1}", use_container_width=True)
-            tile.write("📌")
+        load_progress(3)
