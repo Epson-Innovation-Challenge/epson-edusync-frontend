@@ -14,7 +14,7 @@ def load_progress(class_name):
     df = load_data("due.csv")
     df_class = df[df["Class"] == class_name].copy()
     
-    subjects = ["Math_due", "English_due", "Korean_due","subject_name"]
+    subjects = ["Math_due", "English_due", "Korean_due"]
 
     st.subheader(f"{class_name}반 진도관리")
     for subject in subjects:
