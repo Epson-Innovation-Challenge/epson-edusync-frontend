@@ -1,43 +1,70 @@
 import streamlit as st
+import pandas as pd
 import plotly.figure_factory as ff
-from streamlit.type_util import data_frame_to_bytes
 from utils import load_page_config, load_data
 
-def info_and_stat(class_num):
-    # 학생 정보가 담긴 데이터 로드
-    df = load_data("example.csv")
-    # 특정 반의 학생만 추출
+# Load the data
+df = pd.read_csv('example.csv')
+
+def info_and_stat(df, class_num):
+    # Filter students by class
     df_class = df[df["Class"] == class_num]
 
-    # 반 정보 표시 및 컨테이너 생성
+    # Display class information
     st.subheader(f"1학년 {class_num}반")
-    container = st.container(border=True, height=700)
-    col1, col2 = container.columns([2, 5])
+    container = st.container()
+    col1, col2 = container.columns([1, 3])
 
-    # 학생 정보를 나타내기 위한 부분
+    # Display student information
     with col1:
-        st.markdown("##### 학생")
+        st.markdown("##### 학생 명단")
         for idx, row in df_class.iterrows():
-            student_info = st.container(border=True, height=60)
-            student_info.write(f'{row["Name"]} # {row["Email"]}')
+            with st.expander(f'{row["Name"]} ({row["Gender"]})'):
+                st.image(row["ImageURL"], width=50)
+                st.write(f'Email: {row["Email"]}')
+                st.write(f'Korean: {row["Korean"]}')
+                st.write(f'English: {row["English"]}')
+                st.write(f'Math: {row["Math"]}')
+                st.write(f'Progress: {row["Progress"]}')
 
-    # 통계를 보여주기 위한 부분
+    # Display score statistics and graph
     with col2:
-        st.markdown ("##### 점수 통계")
-        subject = st.radio(label="과목 선택", options=["Korean", "English", "Math"], horizontal= True, label_visibility="collapsed", key=class_num)
-        df_subject = df_class[subject]
-        fig = ff.create_distplot([df_subject], group_labels=[subject])
-        st.plotly_chart(fig, use_container_width=True)
+
+        st.markdown("##### 점수 통계 및 분포")
+        # Calculate statistics
+        subjects = ["Korean", "English", "Math"]
+        stats = {subject: {'mean': df_class[subject].mean(), 'std': df_class[subject].std()} for subject in subjects}
+        # Display statistics
+        for subject, stat in stats.items():
+            st.write(f"{subject} = 평균: {stat['mean']:.2f}점, 표준편차: {stat['std']:.2f}점")
+        # Create distribution plots
+        hist_data = [df_class[subject] for subject in subjects]
+        group_labels = subjects
+        fig = ff.create_distplot(hist_data, group_labels, show_hist=False, show_rug=False)
+        st.plotly_chart(fig)
+        st.data_editor(
+            df_class,
+            column_config={
+                "Progress" : st.column_config.ProgressColumn(
+                    "Total Progress",
+                    help="Total progress of the student",
+                    format="%f",
+                    min_value=0,
+                    max_value=100,
+                ),
+            },
+            hide_index=True,
+        )
 
 
 if __name__ == "__main__":
-    load_page_config()
+    st.set_page_config(page_title="학생 정보 및 통계", layout="wide")
 
     class1, class2, class3 = st.tabs(["1-1", "1-2", "1-3"])
 
     with class1:
-        info_and_stat(1)
+        info_and_stat(df, 1)
     with class2:
-        info_and_stat(2)
+        info_and_stat(df, 2)
     with class3:
-        info_and_stat(3)
+        info_and_stat(df, 3)
