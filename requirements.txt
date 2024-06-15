@@ -1,5 +1,6 @@
 streamlit==1.32.1
 streamlit-chat==0.1.1
+streamlit-pdf-viewer==0.0.12
 st-pages==0.4.5
 langchain==0.1.12
 langchain-cohere==0.1.2
@@ -13,6 +14,7 @@ langgraph==0.0.30
 langserve
 chromadb==0.4.24
 pymupdf
+python-docx
 unstructured
 unstructured[pdf]
 sentence-transformers==2.5.1
