@@ -4,11 +4,6 @@ name = "Home"
 icon = "🏠"
 
 [[pages]]
-path = "pages/info.py"
-name = "학생정보"
-icon = "🧑🏻‍💻"
-
-[[pages]]
 path = "pages/statistic.py"
 name = "통계확인"
 icon = "🔍"
