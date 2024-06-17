@@ -51,7 +51,7 @@ def chat_main():
         pdf_viewer(input=bytes_data, width=700)
 
         with st.chat_message("assistant"):
-            with st.spinner("Generating response..."):
+            with st.spinner("Generating question..."):
                 question = generate_question(text)
                 message_placeholder = st.empty()
                 full_question = ""
