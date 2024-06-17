@@ -24,3 +24,11 @@ streamlit run app.py
 
 ### 🤖 문제 생성
 <img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/6235d2ec-ab3f-4929-83b5-f7a8466f00a2">
+
+## Generated result
+### 📄 예시 문제
+<img width="500" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/d2ec323a-8e0b-493a-afc8-f9883dab1a88">
+
+### 📄 생성 문제
+<img width="500" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/716e8710-9b23-4638-9510-f55038dfd96d">
+
