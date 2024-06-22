@@ -50,23 +50,31 @@ df['English Grade'] = df['English Rank'].apply(assign_grade)
 df['Math Grade'] = df['Math Rank'].apply(assign_grade)
 
 def student_detail(row):
-    st.image(row["ImageURL"], width=100)
-    details = {
-        "Name": row["Name"],
-        "Gender": row["Gender"],
-        "Email": row["Email"],
-        "Korean": row["Korean"],
-        "Korean Grade": row["Korean Grade"],
-        "English": row["English"],
-        "English Grade": row["English Grade"],
-        "Math": row["Math"],
-        "Math Grade": row["Math Grade"],
-        "Progress": row["Progress"],
-        "GPA": f'{row["GPA"]:.2f}',
-        "Class Rank": f'{row["Class Rank"]:.0f}',
-        "Overall Rank": f'{row["Overall Rank"]:.0f}'
-    }
-    st.table(pd.DataFrame(details.items(), columns=['Attribute', 'Value']))
+    col1, col2 = st.columns([1, 2])
+    with col1:
+        with st.container(border=True):
+            st.image(row["ImageURL"], width=280)
+    with col2:
+        details = {
+            "Name": row["Name"],
+            "Gender": row["Gender"],
+            "Email": row["Email"],
+            "Korean": row["Korean"],
+            "Korean Grade": row["Korean Grade"],
+            "English": row["English"],
+            "English Grade": row["English Grade"],
+            "Math": row["Math"],
+            "Math Grade": row["Math Grade"],
+            "Progress": row["Progress"],
+            "GPA": f'{row["GPA"]:.2f}',
+            "Class Rank": f'{row["Class Rank"]:.0f}',
+            "Overall Rank": f'{row["Overall Rank"]:.0f}'
+        }
+        st.dataframe(
+            pd.DataFrame(details.items(), columns=['Attribute', 'Value']), 
+            hide_index=True,
+            use_container_width=True,
+        )
 
 def info_and_stat(df, class_num):
     # Filter students by class
