@@ -20,5 +20,5 @@ icon = "📑"
 
 [[pages]]
 path = "pages/agent.py"
-name = "Agent"
+name = "출제봇"
 icon = "🤖"
