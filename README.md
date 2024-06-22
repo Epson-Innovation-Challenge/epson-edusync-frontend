@@ -14,16 +14,21 @@ streamlit run app.py
 ## Pages
 
 ### 🏠 Home
-<img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/7f9187e1-76dd-42f6-8812-a0ebfb5a7e21">
+<img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/b096271a-9bdf-4e30-80c7-6e186b2c303d">
 
 ### 🔍 통계확인
-<img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/de1c84f3-ec37-4864-ae00-c5f5cd28354a">
+<img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/729102f2-aca3-4a2a-9981-3a068089e721">
+<img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/04c71e3d-b1ff-4462-84df-8e07feb02650">
+
 
 ### 📌 진도관리
 <img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/e70113cd-776e-4ae4-b21f-a71b1f2d4ca6">
 
-### 🤖 문제 생성
-<img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/6235d2ec-ab3f-4929-83b5-f7a8466f00a2">
+### 📑 저장소
+<img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/eef359b5-690e-48b4-814c-de60330c9a84">
+
+### 🤖 출제봇
+<img width="1000" alt="image" src="https://github.com/Epson-Innovation-Challenge/epson-edusync-teacher/assets/64704608/5c1e416e-0d47-4068-bb84-baad5213a533">
 
 ## Generated result
 ### 📄 예시 문제
